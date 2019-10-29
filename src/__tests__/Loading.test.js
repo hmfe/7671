@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -16,7 +16,7 @@ const setup = (propOverrides) => {
     loading: true,
   }, propOverrides);
 
-  const wrapper = mount(<LoadingSpinner {...props} />);
+  const wrapper = shallow(<LoadingSpinner {...props} />);
   return {
     props,
     wrapper,
@@ -33,11 +33,6 @@ describe('<LoadingSpinner />', () => {
   it('<LoadingSpinner> not displayed when loading prop equals false', () => {
     const {wrapper} = setup({loading: false});
     expect(wrapper.html()).toBeNull();
-  });
-
-  it('<LoadingSpinner> mathced with the once that were passed', () => {
-    const {wrapper, props} = setup();
-    expect(wrapper.props()).toEqual(props);
   });
 });
 
